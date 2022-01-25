@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">PokedexDevChallenge</string>
+    <string name="app_name">Pokedéx</string>
+    <string name="Description">Search Pokémon for name or using the Nation Pokédex number.</string>
+    <string name="SearchHint">What Pokémon are you looking for?</string>
 </resources>
