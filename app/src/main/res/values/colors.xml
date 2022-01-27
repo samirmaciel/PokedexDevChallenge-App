@@ -10,6 +10,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grass">#62B957</color>
+    <color name="grassItemRv">#8BBE8A</color>
     <color name="gender1">#748FC9</color>
     <color name="gender2">#ED6EC7</color>
 </resources>
+
