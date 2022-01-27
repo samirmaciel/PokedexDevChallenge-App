@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".feature.presentation.DetailScreen.StatsScreen.StatsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearlayoutBasestats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="Base Stats"
+            android:layout_marginBottom="20dp"
+            style="@style/FilterTitle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Hp"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvHp"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressHp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinHp"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxHp"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Attack"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvAttack"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressAttack"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinAttack"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxAttack"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Defense"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvDefense"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressDefense"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinDefense"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxDefense"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Sp. Atk"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvSpeedAtk"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressSpeedAtk"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinSpeedAtk"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxSpeedAtk"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Sp. Def"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvSpeedDef"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressSpeedDef"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinSpeedDef"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxSpeedDef"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Speed"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvSpeed"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="45"/>
+
+            <ProgressBar
+                android:id="@+id/progressSpeed"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMinSpeed"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="200"/>
+
+            <TextView
+                android:id="@+id/tvMaxSpeed"
+                style="@style/Description"
+                android:layout_marginStart="20dp"
+                android:text="294"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Total"
+                android:layout_marginStart="40dp"
+                android:layout_width="50dp"
+                style="@style/PokemonType" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                style="@style/Description"
+                android:fontFamily="@font/sfprodisplaybold"
+                android:layout_marginStart="20dp"
+                android:text="300"/>
+
+            <Space
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/Description"
+                android:fontFamily="@font/sfprodisplaybold"
+                android:layout_marginStart="20dp"
+                android:text="Min"/>
+
+            <TextView
+                style="@style/Description"
+                android:fontFamily="@font/sfprodisplaybold"
+                android:layout_marginStart="20dp"
+                android:text="Max"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/linearlayoutBasestats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="The ranges shown on the right are for a level 100 Pokémon. Maximum values are based on a beneficial nature, 252 EVs, 31 IVs; minimum values are based on a hindering nature, 0 EVs, 0 IVs."
+        style="@style/PokemonType"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
