@@ -9,6 +9,7 @@
     <color name="background">#8BBE8A</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tabunselectedtext">#80FFFFFF</color>
     <color name="grass">#62B957</color>
     <color name="grassItemRv">#8BBE8A</color>
     <color name="gender1">#748FC9</color>

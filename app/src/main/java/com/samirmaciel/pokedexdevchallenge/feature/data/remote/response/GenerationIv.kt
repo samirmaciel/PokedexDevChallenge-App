@@ -1,7 +1,7 @@
 package com.samirmaciel.pokedexdevchallenge.feature.data.remote.response
 
 data class GenerationIv(
-    val diamond-pearl: DiamondPearl,
-    val heartgold-soulsilver: HeartgoldSoulsilver,
+    val diamond_pearl: DiamondPearl,
+    val heartgold_soulsilver: HeartgoldSoulsilver,
     val platinum: Platinum
 )

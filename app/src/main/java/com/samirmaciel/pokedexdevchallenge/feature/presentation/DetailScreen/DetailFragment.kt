@@ -21,6 +21,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onResume() {
         super.onResume()
 
+        initComponents()
 
     }
 
@@ -35,7 +36,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 1 -> tab.text = "Stats"
                 2 -> tab.text = "Evolution"
             }
-        }
+        }.attach()
     }
 
     override fun onDestroy() {
