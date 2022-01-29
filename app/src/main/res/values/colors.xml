@@ -10,21 +10,29 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="tabunselectedtext">#80FFFFFF</color>
-    <color name="grass">#62B957</color>
     <color name="grassItemRv">#8BBE8A</color>
     <color name="gender1">#748FC9</color>
     <color name="gender2">#ED6EC7</color>
 
-    <color name="green">#8BBE8A</color>
-    <color name="ground">#F78551</color>
+    <color name="grass">#62B957</color>
+    <color name="ground">#E2BF65</color>
     <color name="water">#58ABF6</color>
     <color name="normal">#B5B9C4</color>
     <color name="polson">#9F6E97</color>
     <color name="electric">#F2CB55</color>
-    <color name="fire">#FFA756</color>
+    <color name="fire">#EE8130</color>
     <color name="fairy">#EBA8C3</color>
-    <color name="bug">#8BD674</color>
-    <color name="fighting">#EB4971</color>
+    <color name="bug">#A6B91A</color>
+    <color name="fighting">#C22E28</color>
+    <color name="ice">#96D9D6</color>
+    <color name="flying">#A98FF3</color>
+    <color name="psychic">#F95587</color>
+    <color name="rock">#B6A136</color>
+    <color name="ghost">#735797</color>
+    <color name="dragon">#6F35FC</color>
+    <color name="dark">#705746</color>
+    <color name="steel">#B7B7CE</color>
+
 
 
 </resources>

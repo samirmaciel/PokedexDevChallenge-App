@@ -19,7 +19,7 @@ class HomeViewModel @Inject constructor(
     val repository : RepositoryDataPokemon
 ) : ViewModel(){
 
-    var pageSize = 20
+    var pageSize = 150
     var offset = 0
 
     var pokemonList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
