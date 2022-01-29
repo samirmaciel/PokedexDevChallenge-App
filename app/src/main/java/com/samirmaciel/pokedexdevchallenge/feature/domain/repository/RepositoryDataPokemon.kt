@@ -2,6 +2,7 @@ package com.samirmaciel.pokedexdevchallenge.feature.domain.repository
 
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonSpecies
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
 
 interface RepositoryDataPokemon {
@@ -11,4 +12,6 @@ interface RepositoryDataPokemon {
     suspend fun getPokemonByName(name : String) : Resource<Pokemon>
 
     suspend fun getPokemonById(id : Int) : Resource<Pokemon>
+
+    suspend fun getPokemonSpeciesById(id : Int) : Resource<PokemonSpecies>
 }

@@ -2,6 +2,7 @@ package com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository
 
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonSpecies
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,4 +24,9 @@ interface PokemonRequestAPI {
     suspend fun getPokemonById(
         @Path("id") id : Int
     ) : Pokemon
+
+    @GET("pokemon-species/{id}")
+    suspend fun getPokemonSpeciesById(
+        @Path("id") id: Int
+    ) : PokemonSpecies
 }

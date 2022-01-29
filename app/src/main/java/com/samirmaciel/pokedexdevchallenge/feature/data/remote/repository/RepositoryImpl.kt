@@ -2,6 +2,7 @@ package com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository
 
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonSpecies
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
 import javax.inject.Inject
@@ -36,6 +37,15 @@ class RepositoryImpl @Inject constructor(
             return Resource.Error("An unknow error ocurred. ")
         }
 
+        return Resource.Success(response)
+    }
+
+    override suspend fun getPokemonSpeciesById(id: Int): Resource<PokemonSpecies> {
+        val response = try{
+            pokemonRequestAPI.getPokemonSpeciesById(id)
+        } catch (e : java.lang.Exception){
+            return Resource.Error("An unknow error ocurred.")
+        }
         return Resource.Success(response)
     }
 }

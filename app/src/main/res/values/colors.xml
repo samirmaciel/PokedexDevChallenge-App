@@ -14,5 +14,18 @@
     <color name="grassItemRv">#8BBE8A</color>
     <color name="gender1">#748FC9</color>
     <color name="gender2">#ED6EC7</color>
+
+    <color name="green">#8BBE8A</color>
+    <color name="ground">#F78551</color>
+    <color name="water">#58ABF6</color>
+    <color name="normal">#B5B9C4</color>
+    <color name="polson">#9F6E97</color>
+    <color name="electric">#F2CB55</color>
+    <color name="fire">#FFA756</color>
+    <color name="fairy">#EBA8C3</color>
+    <color name="bug">#8BD674</color>
+    <color name="fighting">#EB4971</color>
+
+
 </resources>
 

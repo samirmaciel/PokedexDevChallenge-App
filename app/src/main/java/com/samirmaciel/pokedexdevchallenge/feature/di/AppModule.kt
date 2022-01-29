@@ -3,6 +3,7 @@ package com.samirmaciel.pokedexdevchallenge.feature.di
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository.PokemonRequestAPI
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository.RepositoryImpl
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
+import com.samirmaciel.pokedexdevchallenge.feature.presentation.HomeScreen.HomeViewModel
 import com.samirmaciel.pokedexdevchallenge.feature.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -31,6 +32,12 @@ object AppModule {
     @Provides
     fun provideRepositoryDataPokemon( pokemonRequestAPI: PokemonRequestAPI ) : RepositoryDataPokemon {
         return RepositoryImpl(pokemonRequestAPI)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeViewModel(repository : RepositoryDataPokemon) : HomeViewModel{
+        return HomeViewModel(repository)
     }
 
 }
