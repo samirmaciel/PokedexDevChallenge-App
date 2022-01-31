@@ -1,10 +1,12 @@
 package com.samirmaciel.pokedexdevchallenge.feature.di
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository.PokemonRequestAPI
-import com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository.RepositoryImpl
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.repository.RepositoryPokedexImpl
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
 import com.samirmaciel.pokedexdevchallenge.feature.presentation.HomeScreen.HomeViewModel
-import com.samirmaciel.pokedexdevchallenge.feature.util.Constants.BASE_URL
+import com.samirmaciel.pokedexdevchallenge.feature.util.Constants.BASE_URL_PokedexV2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +24,7 @@ object AppModule {
     @Provides
     fun providePokemonRequestAPI() : PokemonRequestAPI {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_PokedexV2)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PokemonRequestAPI::class.java)
@@ -31,9 +33,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRepositoryDataPokemon( pokemonRequestAPI: PokemonRequestAPI ) : RepositoryDataPokemon {
-        return RepositoryImpl(pokemonRequestAPI)
+        return RepositoryPokedexImpl(pokemonRequestAPI)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @Singleton
     @Provides
     fun provideHomeViewModel(repository : RepositoryDataPokemon) : HomeViewModel{

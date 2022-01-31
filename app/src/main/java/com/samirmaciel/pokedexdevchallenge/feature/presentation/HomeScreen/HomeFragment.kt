@@ -40,23 +40,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.edtSearch.doOnTextChanged { text, start, before, count -> viewModel.searchPokemon(text.toString())  }
 
-
-
-        viewModel.pokemonLoadingList.observe(this){
+        viewModel.pokemonList.observe(this){
             recyclerViewAdapter.itemList.addAll(it)
             recyclerViewAdapter.notifyDataSetChanged()
-            viewModel.getPokemonList()
+//            viewModel.getPokemonList()
         }
 
         viewModel.pokemonSearchList.observe(this){
-            recyclerViewAdapter.itemList = it
-            recyclerViewAdapter.notifyDataSetChanged()
+//            recyclerViewAdapter.itemList = it
+//            recyclerViewAdapter.notifyDataSetChanged()
         }
 
-        viewModel.progressLoadingPokemons.observe(this){
-                binding.progressLoading.progress = it
-            Log.d("progressLoading", "onResume: " + it)
-        }
+
     }
 
 

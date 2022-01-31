@@ -36,4 +36,5 @@ import com.samirmaciel.pokedexdevchallenge.R
         "fighting" to R.color.fighting,
         "psychic" to R.color.psychic,
         "dark" to R.color.dark,
+        "default" to R.color.normal
     )

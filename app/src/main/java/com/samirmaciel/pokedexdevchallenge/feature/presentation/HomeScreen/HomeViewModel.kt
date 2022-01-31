@@ -7,13 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
 import com.samirmaciel.pokedexdevchallenge.feature.domain.model.PokemonEntry
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
-import com.samirmaciel.pokedexdevchallenge.feature.util.getColor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -24,15 +22,13 @@ class HomeViewModel @Inject constructor(
     val repository : RepositoryDataPokemon
 ) : ViewModel(){
 
-    var totalOfPokemons = 898
-    var currentProgress = 0
-    var progressLoadingPokemons : MutableLiveData<Int> = MutableLiveData(currentProgress)
-    var currentPokemonId = 1
+    var limit = 20
+    var offset = 0
 
-    var pokemonLoadingList : MutableLiveData<MutableList<Pokemon>> = MutableLiveData()
+
+    var pokemonList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
     var pokemonBaseList : MutableList<Pokemon> = mutableListOf()
     var pokemonSearchList : MutableLiveData<MutableList<Pokemon>> = MutableLiveData()
-    var loadingPokemons : MutableLiveData<Boolean> = MutableLiveData(true)
 
     init {
         getPokemonList()
@@ -43,32 +39,38 @@ class HomeViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            val pokemonListRequested = mutableListOf<Pokemon>()
+            val result = repository.getPokemonList(limit, offset)
 
-            if(currentPokemonId <= totalOfPokemons) {
-                for (count in 1..30) {
-                    val pokemonResult = repository.getPokemonById(currentPokemonId)
+            when(result){
 
-                    when (pokemonResult) {
+                is Resource.Success -> {
+                    val pokemonEntryList = result.data!!.results.mapIndexed { index, result ->
 
-                        is Resource.Success<*> -> {
-                            pokemonListRequested.add(pokemonResult.data!!)
-                            pokemonBaseList.add(pokemonResult.data!!)
+                        val id = if(result.url.endsWith("/")){
+                            result.url.dropLast(1).takeLastWhile { it.isDigit() }
+                        }else{
+                            result.url.takeLastWhile { it.isDigit() }
                         }
+                        PokemonEntry(
+                            id = id.toInt(),
+                            name = result.name
+                        )
+                    }.toMutableList()
 
-                        is Resource.Error<*> -> {
+                    pokemonEntryList.forEach{
 
-                        }
                     }
-                    currentPokemonId++
-                }
-                currentProgress = currentProgress+  pokemonListRequested.size
-                progressLoadingPokemons.postValue(currentProgress)
-                pokemonLoadingList.postValue(pokemonListRequested)
 
-            }else{
-                loadingPokemons.postValue(false)
+                    pokemonList.postValue(pokemonEntryList)
+                }
+
+                is Resource.Error -> {
+
+                    pokemonList.postValue(mutableListOf())
+                }
             }
+
+            offset += limit
         }
     }
 

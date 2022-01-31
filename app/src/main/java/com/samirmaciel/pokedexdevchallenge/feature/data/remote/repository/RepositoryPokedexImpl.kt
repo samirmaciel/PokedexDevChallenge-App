@@ -7,7 +7,7 @@ import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryD
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
 import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor(
+class RepositoryPokedexImpl @Inject constructor(
     val pokemonRequestAPI : PokemonRequestAPI
 ) : RepositoryDataPokemon{
     override suspend fun getPokemonList(limit : Int, offset : Int): Resource<PokemonList> {
