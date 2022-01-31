@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,9 @@ import com.samirmaciel.pokedexdevchallenge.R
 import com.samirmaciel.pokedexdevchallenge.databinding.FragmentHomeBinding
 import com.samirmaciel.pokedexdevchallenge.feature.util.PokemonHomeRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.coroutines.coroutineContext
+import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.coroutineScope as coroutineScope
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -34,13 +38,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onResume() {
         super.onResume()
 
-        viewModel.getPokemonList()
+        binding.edtSearch.doOnTextChanged { text, start, before, count -> viewModel.searchPokemon(text.toString())  }
 
-        viewModel.pokemonList.observe(this){
+
+
+        viewModel.pokemonLoadingList.observe(this){
             recyclerViewAdapter.itemList.addAll(it)
             recyclerViewAdapter.notifyDataSetChanged()
+            viewModel.getPokemonList()
+        }
+
+        viewModel.pokemonSearchList.observe(this){
+            recyclerViewAdapter.itemList = it
+            recyclerViewAdapter.notifyDataSetChanged()
+        }
+
+        viewModel.progressLoadingPokemons.observe(this){
+                binding.progressLoading.progress = it
+            Log.d("progressLoading", "onResume: " + it)
         }
     }
+
+
 
     private fun initComponents(){
         recyclerViewAdapter = PokemonHomeRecyclerViewAdapter {
