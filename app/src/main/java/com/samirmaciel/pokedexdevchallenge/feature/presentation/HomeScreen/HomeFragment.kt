@@ -43,18 +43,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.pokemonList.observe(this){
             recyclerViewAdapter.itemList.addAll(it)
             recyclerViewAdapter.notifyDataSetChanged()
-//            viewModel.getPokemonList()
+            binding.progressLoading.progress = viewModel.currentProgress
+
+            if(viewModel.currentProgress >= 898){
+                binding.edtSearch.isEnabled = true
+                binding.edtSearch.hint = resources.getText(R.string.SearchHint)
+                binding.progressLoading.visibility = View.INVISIBLE
+            }else{
+                viewModel.getPokemonList()
+            }
         }
 
         viewModel.pokemonSearchList.observe(this){
-//            recyclerViewAdapter.itemList = it
-//            recyclerViewAdapter.notifyDataSetChanged()
+            recyclerViewAdapter.itemList = it
+            recyclerViewAdapter.notifyDataSetChanged()
         }
-
-
     }
-
-
 
     private fun initComponents(){
         recyclerViewAdapter = PokemonHomeRecyclerViewAdapter {

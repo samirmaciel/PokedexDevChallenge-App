@@ -64,26 +64,25 @@
     <ProgressBar
         android:id="@+id/progressLoading"
         style="?android:attr/progressBarStyleHorizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+        app:layout_constraintStart_toStartOf="@id/edtSearch"
+        app:layout_constraintEnd_toEndOf="@id/edtSearch"
+        app:layout_constraintTop_toBottomOf="@id/edtSearch"
         android:max="890"
-        android:layout_marginTop="10dp"
         android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"/>
+        android:layout_height="10dp" />
 
     <EditText
         android:id="@+id/edtSearch"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/progressLoading"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:drawableLeft="@drawable/ic_baseline_search_24"
         android:paddingStart="8dp"
+        android:enabled="false"
         android:textAlignment="center"
-        android:hint="@string/SearchHint"
+        android:hint="@string/hint_loading_pokemons"
         style="@style/Description"
         android:layout_marginTop="10dp"
         android:layout_marginStart="40dp"

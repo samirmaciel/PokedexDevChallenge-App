@@ -24,11 +24,12 @@ class HomeViewModel @Inject constructor(
 
     var limit = 20
     var offset = 0
+    var currentProgress = 0
 
 
     var pokemonList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
-    var pokemonBaseList : MutableList<Pokemon> = mutableListOf()
-    var pokemonSearchList : MutableLiveData<MutableList<Pokemon>> = MutableLiveData()
+    var pokemonBaseList : MutableList<PokemonEntry> = mutableListOf()
+    var pokemonSearchList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
 
     init {
         getPokemonList()
@@ -60,8 +61,9 @@ class HomeViewModel @Inject constructor(
                     pokemonEntryList.forEach{
 
                     }
-
+                    pokemonBaseList.addAll(pokemonEntryList)
                     pokemonList.postValue(pokemonEntryList)
+                    currentProgress += pokemonEntryList.size
                 }
 
                 is Resource.Error -> {

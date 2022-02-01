@@ -2,4 +2,5 @@
     <string name="app_name">Pokedéx</string>
     <string name="Description">Search Pokémon for name or using the Nation Pokédex number.</string>
     <string name="SearchHint">What Pokémon are you looking for?</string>
+    <string name="hint_loading_pokemons">Loading Pokémons...</string>
 </resources>
