@@ -9,7 +9,11 @@
             android:layout_width="match_parent"
             android:layout_height="115dp"
             app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +62,8 @@
 
                 <TextView
                     android:id="@+id/tvPokemonName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
+                    android:ellipsize="end"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/tvPokemonNumber"
                     app:layout_constraintStart_toStartOf="@id/tvPokemonNumber"

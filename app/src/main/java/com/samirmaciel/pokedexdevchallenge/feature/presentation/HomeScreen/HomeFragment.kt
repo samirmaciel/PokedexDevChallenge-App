@@ -41,23 +41,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.edtSearch.doOnTextChanged { text, start, before, count -> viewModel.searchPokemon(text.toString())  }
 
         viewModel.pokemonList.observe(this){
-            recyclerViewAdapter.itemList.addAll(it)
-            recyclerViewAdapter.notifyDataSetChanged()
-            binding.progressLoading.progress = viewModel.currentProgress
+                recyclerViewAdapter.itemList = it
+                recyclerViewAdapter.notifyDataSetChanged()
+        }
 
-            if(viewModel.currentProgress >= 898){
+        viewModel.loadingProgressNotify.observe(this){
+            Log.d("ErrorApiRequest", "getAllPokmeonsById: " + it)
+            binding.progressLoading.progress = viewModel.loadingProgressList
+
+            if(viewModel.loadingProgressList >= 150){
                 binding.edtSearch.isEnabled = true
                 binding.edtSearch.hint = resources.getText(R.string.SearchHint)
                 binding.progressLoading.visibility = View.INVISIBLE
-            }else{
-                viewModel.getPokemonList()
             }
         }
 
-        viewModel.pokemonSearchList.observe(this){
-            recyclerViewAdapter.itemList = it
-            recyclerViewAdapter.notifyDataSetChanged()
-        }
+//        viewModel.pokemonSearchList.observe(this){
+//            recyclerViewAdapter.itemList = it
+//            recyclerViewAdapter.notifyDataSetChanged()
+//        }
     }
 
     private fun initComponents(){

@@ -12,21 +12,22 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.samirmaciel.pokedexdevchallenge.R
+import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
 import com.samirmaciel.pokedexdevchallenge.feature.domain.model.PokemonEntry
 import java.util.*
 
 
 class PokemonHomeRecyclerViewAdapter(private val itemClick : () -> Unit) : RecyclerView.Adapter<PokemonHomeRecyclerViewAdapter.MyViewHolder>() {
 
-    var itemList : MutableList<PokemonEntry> = mutableListOf()
+    var itemList : MutableList<Pokemon> = mutableListOf()
 
     class MyViewHolder(val itemView : View, val context : Context) : RecyclerView.ViewHolder(itemView) {
 
         @RequiresApi(Build.VERSION_CODES.N)
-        fun bindItem(item : PokemonEntry, itemClick: () -> Unit){
+        fun bindItem(item : Pokemon, itemClick: () -> Unit){
 
             itemView.findViewById<TextView>(R.id.tvPokemonName).text = item.name.capitalize(Locale.ROOT)
-            itemView.findViewById<TextView>(R.id.tvPokemonNumber).text = "#${item.id}"
+            itemView.findViewById<TextView>(R.id.tvPokemonNumber).text = "#${item.id.toString().padStart(3, '0')}"
 
             val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png"
 

@@ -24,55 +24,88 @@ class HomeViewModel @Inject constructor(
 
     var limit = 20
     var offset = 0
-    var currentProgress = 0
+    var loadingProgressList = 1
+    var loadingProgressNotify : MutableLiveData<Int> = MutableLiveData(0)
 
 
-    var pokemonList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
+    var pokemonList : MutableLiveData<MutableList<Pokemon>> = MutableLiveData()
     var pokemonBaseList : MutableList<PokemonEntry> = mutableListOf()
     var pokemonSearchList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
 
+
+    var pokemonFullBaseList : MutableList<Pokemon> = mutableListOf()
+
     init {
-        getPokemonList()
+        getAllPokmeonsById(loadingProgressList)
     }
     
     @RequiresApi(Build.VERSION_CODES.N)
     fun getPokemonList() {
 
         viewModelScope.launch {
+            if(loadingProgressList < 898 ){
+                val result = repository.getPokemonList(limit, offset)
 
-            val result = repository.getPokemonList(limit, offset)
+                when(result){
 
-            when(result){
+                    is Resource.Success -> {
+                        val pokemonEntryList = result.data!!.results.mapIndexed { index, result ->
 
-                is Resource.Success -> {
-                    val pokemonEntryList = result.data!!.results.mapIndexed { index, result ->
+                            val id = if(result.url.endsWith("/")){
+                                result.url.dropLast(1).takeLastWhile { it.isDigit() }
+                            }else{
+                                result.url.takeLastWhile { it.isDigit() }
+                            }
+                            PokemonEntry(
+                                id = id.toInt(),
+                                name = result.name
+                            )
+                        }.toMutableList()
 
-                        val id = if(result.url.endsWith("/")){
-                            result.url.dropLast(1).takeLastWhile { it.isDigit() }
-                        }else{
-                            result.url.takeLastWhile { it.isDigit() }
-                        }
-                        PokemonEntry(
-                            id = id.toInt(),
-                            name = result.name
-                        )
-                    }.toMutableList()
+                        pokemonBaseList.addAll(pokemonEntryList)
+                        loadingProgressList += pokemonEntryList.size
+                        loadingProgressNotify.postValue(loadingProgressList)
+                    }
 
-                    pokemonEntryList.forEach{
+                    is Resource.Error -> {
 
                     }
-                    pokemonBaseList.addAll(pokemonEntryList)
-                    pokemonList.postValue(pokemonEntryList)
-                    currentProgress += pokemonEntryList.size
+                }
+
+                offset += limit
+
+                getPokemonList()
+            }else {
+                pokemonList.postValue(pokemonFullBaseList)
+            }
+        }
+    }
+
+    fun getAllPokmeonsById(id : Int){
+
+        viewModelScope.launch {
+
+            val response = repository.getPokemonById(id)
+
+            when(response){
+
+                is Resource.Success -> {
+                    pokemonFullBaseList.add(response.data!!)
+                    loadingProgressList += 1
                 }
 
                 is Resource.Error -> {
-
-                    pokemonList.postValue(mutableListOf())
+                    Log.d("ErrorApiRequest", "getAllPokmeonsById: ")
                 }
             }
+            loadingProgressNotify.postValue(loadingProgressList)
 
-            offset += limit
+            if(loadingProgressList < 150){
+                getAllPokmeonsById(loadingProgressList)
+            }else{
+                pokemonList.postValue(pokemonFullBaseList)
+            }
+
         }
     }
 
