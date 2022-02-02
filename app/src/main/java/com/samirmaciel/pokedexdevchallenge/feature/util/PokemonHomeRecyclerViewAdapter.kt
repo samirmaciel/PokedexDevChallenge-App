@@ -26,13 +26,21 @@ class PokemonHomeRecyclerViewAdapter(private val itemClick : () -> Unit) : Recyc
         @RequiresApi(Build.VERSION_CODES.N)
         fun bindItem(item : Pokemon, itemClick: () -> Unit){
 
+            val ivType1 = itemView.findViewById<ImageView>(R.id.ivTypeIcon1)
+            val ivType2 = itemView.findViewById<ImageView>(R.id.ivTypeIcon2)
             itemView.findViewById<TextView>(R.id.tvPokemonName).text = item.name.capitalize(Locale.ROOT)
             itemView.findViewById<TextView>(R.id.tvPokemonNumber).text = "#${item.id.toString().padStart(3, '0')}"
 
             val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png"
 
-            val type = getPokemonType(item.id)
-            val color = getColor(type)
+            ivType1.setImageResource( getPokemonType(item.types[0].type.name))
+
+            if (item.types.size > 1){
+                ivType2.setImageResource(getPokemonType(item.types[1].type.name))
+                ivType2.visibility = View.VISIBLE
+            }
+
+            val color = getColor(item.types[0].type.name)
 
             Glide.with(itemView).load(imageUrl).into(itemView.findViewById<ImageView>(R.id.ivPokemonImage))
             itemView.findViewById<CardView>(R.id.cardviewPokemon).setCardBackgroundColor(context.resources.getColor(color))

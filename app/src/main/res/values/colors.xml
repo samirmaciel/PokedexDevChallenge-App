@@ -14,13 +14,13 @@
     <color name="gender1">#748FC9</color>
     <color name="gender2">#ED6EC7</color>
 
-    <color name="grass">#62B957</color>
+    <color name="grass">#8BBE8A</color>
     <color name="ground">#E2BF65</color>
     <color name="water">#58ABF6</color>
     <color name="normal">#B5B9C4</color>
     <color name="polson">#9F6E97</color>
     <color name="electric">#F2CB55</color>
-    <color name="fire">#EE8130</color>
+    <color name="fire">#FFA756</color>
     <color name="fairy">#EBA8C3</color>
     <color name="bug">#A6B91A</color>
     <color name="fighting">#C22E28</color>

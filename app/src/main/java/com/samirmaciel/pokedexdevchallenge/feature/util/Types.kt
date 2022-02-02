@@ -1,14 +1,41 @@
 package com.samirmaciel.pokedexdevchallenge.feature.util
 
+import com.samirmaciel.pokedexdevchallenge.R
 
 
-fun getPokemonType(id : Int) : String{
-    if(mapTypes[id] != null){
-        return mapTypes[id]!!
-    }else {
-        return "default"
-    }
+fun getPokemonType(type : String) : Int{
+//    if(mapTypes[id] != null){
+//        return mapTypes[id]!!
+//    }else {
+//        return "default"
+//    }
+
+    return maptypes[type]!!
 }
+
+val maptypes = mapOf<String, Int>(
+
+    "bug" to R.drawable.ic_typebug,
+    "dark" to R.drawable.ic_typedark,
+    "dragon" to R.drawable.ic_typedragon,
+    "electric" to R.drawable.ic_typeelectric,
+    "fairy" to R.drawable.ic_typefairy,
+    "fighting" to R.drawable.ic_typefighting,
+    "fire" to R.drawable.ic_typefire,
+    "flying" to R.drawable.ic_typeflying,
+    "ghost" to R.drawable.ic_typeghost,
+    "grass" to R.drawable.ic_typegrass,
+    "ground" to R.drawable.ic_typeground,
+    "ice" to R.drawable.ic_typeice,
+    "normal" to R.drawable.ic_typenormal,
+    "poison" to R.drawable.ic_typepoison,
+    "psychic" to R.drawable.ic_typepsychic,
+    "steel" to R.drawable.ic_typesteel,
+    "water" to R.drawable.ic_typewater,
+
+
+
+)
 
 val mapTypes = mapOf<Int , String>(
     1 to "grass",
