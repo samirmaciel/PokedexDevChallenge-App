@@ -3,4 +3,7 @@
     <string name="Description">Search Pokémon for name or using the Nation Pokédex number.</string>
     <string name="SearchHint">What Pokémon are you looking for?</string>
     <string name="hint_loading_pokemons">Loading Pokémons...</string>
+    <string name="title_filter">Filters</string>
+    <string name="description_filter">Use advanced search to explore Pokémon by type, weakness, height and more!</string>
+    <string name="title_types">Types</string>
 </resources>
