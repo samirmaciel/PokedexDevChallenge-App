@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samirmaciel.pokedexdevchallenge.R
 import com.samirmaciel.pokedexdevchallenge.databinding.FragmentHomeBinding
+import com.samirmaciel.pokedexdevchallenge.feature.presentation.FilterBottomSheet.FilterBottomSheet
 import com.samirmaciel.pokedexdevchallenge.feature.util.PokemonHomeRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.coroutines.coroutineContext
@@ -54,6 +55,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 binding.edtSearch.hint = resources.getText(R.string.SearchHint)
                 binding.progressLoading.visibility = View.INVISIBLE
             }
+        }
+
+        binding.ibFilter.setOnClickListener{
+            FilterBottomSheet().show(childFragmentManager, "FilterBottomSheet")
         }
 
 //        viewModel.pokemonSearchList.observe(this){

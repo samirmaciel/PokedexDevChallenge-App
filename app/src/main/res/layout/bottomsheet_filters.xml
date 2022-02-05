@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="30dp"
-    android:background="@android:color/transparent"
+    tools:context=".feature.presentation.FilterBottomSheet.FilterBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -70,36 +71,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/title_types"/>
 
-            <HorizontalScrollView
-                app:layout_constraintTop_toBottomOf="@id/tvTypeTitle"
-                app:layout_constraintEnd_toEndOf="parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFilters"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTypeTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/ivTypeBug"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_type_bug__selected_false"/>
-
-                    <ImageView
-                        android:id="@+id/ivTypeDark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:src="@drawable/ic_type_dark__selected_false"/>
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
+                android:layout_height="wrap_content"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

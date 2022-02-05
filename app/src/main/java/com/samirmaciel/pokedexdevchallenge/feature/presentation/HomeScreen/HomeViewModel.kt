@@ -9,8 +9,10 @@ import androidx.lifecycle.viewModelScope
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
 import com.samirmaciel.pokedexdevchallenge.feature.domain.model.PokemonEntry
+import com.samirmaciel.pokedexdevchallenge.feature.domain.model.TypeFilter
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
+import com.samirmaciel.pokedexdevchallenge.feature.util.TypesFilter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.*
@@ -32,11 +34,14 @@ class HomeViewModel @Inject constructor(
     var pokemonBaseList : MutableList<PokemonEntry> = mutableListOf()
     var pokemonSearchList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
 
+    var filterTypesList : MutableLiveData<List<TypeFilter>> = MutableLiveData()
+
 
     var pokemonFullBaseList : MutableList<Pokemon> = mutableListOf()
 
     init {
         getAllPokmeonsById(loadingProgressList)
+        getFilterTypesList()
     }
     
     @RequiresApi(Build.VERSION_CODES.N)
@@ -114,5 +119,9 @@ class HomeViewModel @Inject constructor(
             it.name.contains(name, true)
         }.toMutableList()
 
+    }
+
+    private fun getFilterTypesList(){
+        filterTypesList.value = TypesFilter.getTypeFilterList()
     }
 }
