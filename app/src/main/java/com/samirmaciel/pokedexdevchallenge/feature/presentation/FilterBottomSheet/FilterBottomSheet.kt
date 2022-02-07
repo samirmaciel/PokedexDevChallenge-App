@@ -21,6 +21,7 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     lateinit var typesFilterAdapter : FilterTypesRecyclerAdapter
     lateinit var weaknessesFilterAdapter : FilterTypesRecyclerAdapter
     lateinit var heightFilterAdapter : FilterTypesRecyclerAdapter
+    lateinit var weightFilterAdapter : FilterTypesRecyclerAdapter
 
     private val viewModel : HomeViewModel by viewModels({requireParentFragment()})
 
@@ -62,6 +63,11 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
             heightFilterAdapter.notifyDataSetChanged()
         }
 
+        viewModel.weightList.observe(this){
+            weightFilterAdapter.itemList = it
+            weightFilterAdapter.notifyDataSetChanged()
+        }
+
         binding.rsRangernumber.addOnChangeListener { rangeSlider, value, fromUser ->
             val values = rangeSlider.values
                 binding.tvStartRange.text = values[0].toInt().toString()
@@ -101,6 +107,11 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
         binding.rvHeight.adapter = heightFilterAdapter
         binding.rvHeight.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        weightFilterAdapter = FilterTypesRecyclerAdapter {
+        }
+
+        binding.rvWeights.adapter = weightFilterAdapter
+        binding.rvWeights.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
     }
 
