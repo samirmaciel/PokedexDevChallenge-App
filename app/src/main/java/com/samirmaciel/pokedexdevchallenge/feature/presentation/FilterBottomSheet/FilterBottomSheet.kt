@@ -40,15 +40,25 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
         initComponents()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.MyBottomSheetDialogTheme)
+
+    }
+
     override fun onResume() {
         super.onResume()
-
-        binding.rsRanernumber.setValues(1.0f,5.0f)
-
         viewModel.filterTypesList.observe(this) {
             typesFilterAdapter.itemList = it
             typesFilterAdapter.notifyDataSetChanged()
-            Log.d("BottomSheet", "onResume: " + it.size)
+        }
+
+        binding.rsRangernumber.addOnChangeListener { rangeSlider, value, fromUser ->
+
+            val values = rangeSlider.values
+                binding.tvStartRange.text = values[0].toInt().toString()
+                binding.tvEndRange.text = values[1].toInt().toString()
+
         }
     }
 
@@ -62,6 +72,8 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     }
 
     private fun initComponents(){
+        binding.rsRangernumber.setValues(1f, 149f)
+
         typesFilterAdapter = FilterTypesRecyclerAdapter { position ->
             viewModel.filterTypesList.value!![position].isSelected = !viewModel.filterTypesList.value!![position].isSelected
         }

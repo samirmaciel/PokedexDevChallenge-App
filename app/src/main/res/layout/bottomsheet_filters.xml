@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:background="@android:color/transparent"
+    android:gravity="center_horizontal"
     tools:context=".feature.presentation.FilterBottomSheet.FilterBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -152,17 +152,44 @@
                 android:text="@string/title_number_range"/>
 
             <com.google.android.material.slider.RangeSlider
-                android:id="@+id/rsRanernumber"
+                android:id="@+id/rsRangernumber"
+                app:tickColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/tvNumberRangeTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:valueFrom="0"
-                android:valueTo="10"
+                android:valueFrom="0.0"
+                android:valueTo="150.0"
+                app:labelBehavior="gone"
+                app:trackColor="@color/sliderThumb"
+                app:thumbColor="@color/sliderThumb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:id="@+id/tvStartRange"
+                style="@style/PokemonType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
+                app:layout_constraintStart_toStartOf="@id/rsRangernumber"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/tvEndRange"
+                style="@style/PokemonType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
+                app:layout_constraintEnd_toEndOf="@id/rsRangernumber"
+                android:layout_marginEnd="15dp"
+                android:text="150"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
