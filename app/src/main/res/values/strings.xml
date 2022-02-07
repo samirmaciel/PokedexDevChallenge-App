@@ -6,4 +6,8 @@
     <string name="title_filter">Filters</string>
     <string name="description_filter">Use advanced search to explore Pokémon by type, weakness, height and more!</string>
     <string name="title_types">Types</string>
+    <string name="title_Weaknesses">Weaknesses</string>
+    <string name="title_Heights">Heights</string>
+    <string name="title_Weights">Weights</string>
+    <string name="title_number_range">Number Range</string>
 </resources>

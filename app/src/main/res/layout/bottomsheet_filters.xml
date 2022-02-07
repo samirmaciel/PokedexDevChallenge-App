@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="30dp"
+    app:background="@android:color/transparent"
     tools:context=".feature.presentation.FilterBottomSheet.FilterBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -77,7 +77,93 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTypeTitle"
                 android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/tvWeaknessesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FilterTitle"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/rvFilters"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/title_Weaknesses"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeaknesses"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toBottomOf="@id/tvWeaknessesTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvHeightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FilterTitle"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/rvWeaknesses"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/title_Heights"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHeight"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeightTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvWeightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FilterTitle"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/rvHeight"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/title_Weights"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeights"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvNumberRangeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/FilterTitle"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toBottomOf="@id/rvWeights"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/title_number_range"/>
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/rsRanernumber"
+                app:layout_constraintTop_toBottomOf="@id/tvNumberRangeTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:valueFrom="0"
+                android:valueTo="10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

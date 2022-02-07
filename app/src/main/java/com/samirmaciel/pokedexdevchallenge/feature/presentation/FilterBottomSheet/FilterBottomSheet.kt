@@ -43,6 +43,8 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     override fun onResume() {
         super.onResume()
 
+        binding.rsRanernumber.setValues(1.0f,5.0f)
+
         viewModel.filterTypesList.observe(this) {
             typesFilterAdapter.itemList = it
             typesFilterAdapter.notifyDataSetChanged()
@@ -53,10 +55,6 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
 
     private fun initSettingsBottomSheet(){
         val bottomsheet = dialog as? BottomSheetDialog
-        bottomsheet?.window?.setDimAmount(0f)
-
-
-
         bottomsheet?.behavior?.apply {
             isFitToContents = true
             state = BottomSheetBehavior.STATE_EXPANDED
@@ -64,8 +62,8 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     }
 
     private fun initComponents(){
-        typesFilterAdapter = FilterTypesRecyclerAdapter {
-
+        typesFilterAdapter = FilterTypesRecyclerAdapter { position ->
+            viewModel.filterTypesList.value!![position].isSelected = !viewModel.filterTypesList.value!![position].isSelected
         }
         binding.rvFilters.adapter = typesFilterAdapter
         binding.rvFilters.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
