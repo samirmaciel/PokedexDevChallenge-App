@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
     var pokemonSearchList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
 
     var filterTypesList : MutableLiveData<List<TypeFilter>> = MutableLiveData()
-
+    var filterWeaknessesList : MutableLiveData<List<TypeFilter>> = MutableLiveData()
 
     var pokemonFullBaseList : MutableList<Pokemon> = mutableListOf()
 
@@ -123,5 +123,6 @@ class HomeViewModel @Inject constructor(
 
     private fun getFilterTypesList(){
         filterTypesList.value = TypesFilter.getTypeFilterList()
+        filterWeaknessesList.value = TypesFilter.getTypeFilterList()
     }
 }

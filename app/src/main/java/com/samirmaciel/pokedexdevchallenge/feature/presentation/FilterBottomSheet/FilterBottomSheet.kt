@@ -22,6 +22,7 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     private var _binding : BottomsheetFiltersBinding? = null
     private val binding : BottomsheetFiltersBinding get() = _binding!!
     lateinit var typesFilterAdapter : FilterTypesRecyclerAdapter
+    lateinit var weaknessesFilterAdapter : FilterTypesRecyclerAdapter
 
     private val viewModel : HomeViewModel by viewModels({requireParentFragment()})
 
@@ -34,17 +35,13 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initSettingsBottomSheet()
-        initComponents()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initSettingsBottomSheet()
+        initComponents()
         setStyle(STYLE_NORMAL, R.style.MyBottomSheetDialogTheme)
-
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -53,12 +50,15 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
             typesFilterAdapter.notifyDataSetChanged()
         }
 
-        binding.rsRangernumber.addOnChangeListener { rangeSlider, value, fromUser ->
+        viewModel.filterWeaknessesList.observe(this){
+            weaknessesFilterAdapter.itemList = it
+            typesFilterAdapter.notifyDataSetChanged()
+        }
 
+        binding.rsRangernumber.addOnChangeListener { rangeSlider, value, fromUser ->
             val values = rangeSlider.values
                 binding.tvStartRange.text = values[0].toInt().toString()
                 binding.tvEndRange.text = values[1].toInt().toString()
-
         }
     }
 
@@ -75,10 +75,17 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
         binding.rsRangernumber.setValues(1f, 149f)
 
         typesFilterAdapter = FilterTypesRecyclerAdapter { position ->
-            viewModel.filterTypesList.value!![position].isSelected = !viewModel.filterTypesList.value!![position].isSelected
+//            viewModel.filterTypesList.value!![position].isSelected = !viewModel.filterTypesList.value!![position].isSelected
         }
         binding.rvFilters.adapter = typesFilterAdapter
         binding.rvFilters.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        weaknessesFilterAdapter = FilterTypesRecyclerAdapter { position ->
+
+        }
+
+        binding.rvWeaknesses.adapter = weaknessesFilterAdapter
+        binding.rvWeaknesses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
 
