@@ -7,15 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.Pokemon
-import com.samirmaciel.pokedexdevchallenge.feature.data.remote.response.PokemonList
 import com.samirmaciel.pokedexdevchallenge.feature.domain.model.PokemonEntry
-import com.samirmaciel.pokedexdevchallenge.feature.domain.model.TypeFilter
+import com.samirmaciel.pokedexdevchallenge.feature.domain.model.Type
 import com.samirmaciel.pokedexdevchallenge.feature.domain.repository.RepositoryDataPokemon
 import com.samirmaciel.pokedexdevchallenge.feature.util.Resource
-import com.samirmaciel.pokedexdevchallenge.feature.util.TypesFilter
+import com.samirmaciel.pokedexdevchallenge.feature.util.FilterTypes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.N)
@@ -34,14 +32,15 @@ class HomeViewModel @Inject constructor(
     var pokemonBaseList : MutableList<PokemonEntry> = mutableListOf()
     var pokemonSearchList : MutableLiveData<MutableList<PokemonEntry>> = MutableLiveData()
 
-    var filterTypesList : MutableLiveData<List<TypeFilter>> = MutableLiveData()
-    var filterWeaknessesList : MutableLiveData<List<TypeFilter>> = MutableLiveData()
+    var typesList : MutableLiveData<List<Type>> = MutableLiveData()
+    var weaknessesList : MutableLiveData<List<Type>> = MutableLiveData()
+    var heightList : MutableLiveData<List<Type>> = MutableLiveData()
 
     var pokemonFullBaseList : MutableList<Pokemon> = mutableListOf()
 
     init {
         getAllPokmeonsById(loadingProgressList)
-        getFilterTypesList()
+        getFilterLists()
     }
     
     @RequiresApi(Build.VERSION_CODES.N)
@@ -121,8 +120,9 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    private fun getFilterTypesList(){
-        filterTypesList.value = TypesFilter.getTypeFilterList()
-        filterWeaknessesList.value = TypesFilter.getTypeFilterList()
+    private fun getFilterLists(){
+        typesList.value = FilterTypes.getTypeFilterList()
+        weaknessesList.value = FilterTypes.getTypeFilterList()
+        heightList.value = FilterTypes.getHeightTypes()
     }
 }

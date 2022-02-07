@@ -1,9 +1,6 @@
 package com.samirmaciel.pokedexdevchallenge.feature.presentation.FilterBottomSheet
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +20,7 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     private val binding : BottomsheetFiltersBinding get() = _binding!!
     lateinit var typesFilterAdapter : FilterTypesRecyclerAdapter
     lateinit var weaknessesFilterAdapter : FilterTypesRecyclerAdapter
+    lateinit var heightFilterAdapter : FilterTypesRecyclerAdapter
 
     private val viewModel : HomeViewModel by viewModels({requireParentFragment()})
 
@@ -37,22 +35,31 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.MyBottomSheetDialogTheme)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initSettingsBottomSheet()
         initComponents()
-        setStyle(STYLE_NORMAL, R.style.MyBottomSheetDialogTheme)
     }
 
 
     override fun onResume() {
         super.onResume()
-        viewModel.filterTypesList.observe(this) {
+        viewModel.typesList.observe(this) {
             typesFilterAdapter.itemList = it
             typesFilterAdapter.notifyDataSetChanged()
         }
 
-        viewModel.filterWeaknessesList.observe(this){
+        viewModel.weaknessesList.observe(this){
             weaknessesFilterAdapter.itemList = it
             typesFilterAdapter.notifyDataSetChanged()
+        }
+
+        viewModel.heightList.observe(this){
+            heightFilterAdapter.itemList = it
+            heightFilterAdapter.notifyDataSetChanged()
         }
 
         binding.rsRangernumber.addOnChangeListener { rangeSlider, value, fromUser ->
@@ -75,7 +82,7 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
         binding.rsRangernumber.setValues(1f, 149f)
 
         typesFilterAdapter = FilterTypesRecyclerAdapter { position ->
-//            viewModel.filterTypesList.value!![position].isSelected = !viewModel.filterTypesList.value!![position].isSelected
+
         }
         binding.rvFilters.adapter = typesFilterAdapter
         binding.rvFilters.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -86,6 +93,15 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
 
         binding.rvWeaknesses.adapter = weaknessesFilterAdapter
         binding.rvWeaknesses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        heightFilterAdapter = FilterTypesRecyclerAdapter{
+
+        }
+
+        binding.rvHeight.adapter = heightFilterAdapter
+        binding.rvHeight.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+
     }
 
 

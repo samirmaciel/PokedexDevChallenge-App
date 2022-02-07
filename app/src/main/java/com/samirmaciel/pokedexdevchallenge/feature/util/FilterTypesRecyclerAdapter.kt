@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.samirmaciel.pokedexdevchallenge.R
-import com.samirmaciel.pokedexdevchallenge.feature.domain.model.TypeFilter
+import com.samirmaciel.pokedexdevchallenge.feature.domain.model.Type
 
 class FilterTypesRecyclerAdapter(val itemClick : (Int) -> Unit) : RecyclerView.Adapter<FilterTypesRecyclerAdapter.MyViewHolder>() {
 
-    var itemList : List<TypeFilter> = listOf()
+    var itemList : List<Type> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rv_fitlertypes, parent, false))
@@ -37,7 +37,7 @@ class FilterTypesRecyclerAdapter(val itemClick : (Int) -> Unit) : RecyclerView.A
             }
         }
 
-        fun updateIcon(item : TypeFilter, icon : ImageView){
+        fun updateIcon(item : Type, icon : ImageView){
             if(item.isSelected){
                 icon.setImageResource(item.drawableSelected)
             }else{
