@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center_horizontal"
     tools:context=".feature.presentation.FilterBottomSheet.FilterBottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/pushCardView"
@@ -18,185 +17,230 @@
         android:layout_width="150dp"
         android:layout_height="5dp"/>
 
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pushCardView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="-30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginBottom="30dp"
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pushCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvTitlePage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/PokemonName"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="20dp"
-                android:text="@string/title_filter"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/Description"
-                android:textColor="@color/black"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintTop_toBottomOf="@id/tvTitlePage"
-                app:layout_constraintStart_toStartOf="@id/tvTitlePage"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/description_filter"/>
-
-            <TextView
-                android:id="@+id/tvTypeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/FilterTitle"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/tvDescription"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/title_types"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFilters"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTypeTitle"
+            <androidx.core.widget.NestedScrollView
+                android:layout_marginBottom="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvWeaknessesTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/FilterTitle"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/rvFilters"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/title_Weaknesses"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvWeaknesses"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toBottomOf="@id/tvWeaknessesTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                    <TextView
+                        android:id="@+id/tvTitlePage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/PokemonName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/title_filter"
+                        android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/tvHeightTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/FilterTitle"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/rvWeaknesses"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/title_Heights"/>
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Description"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvTitlePage"
+                        app:layout_constraintStart_toStartOf="@id/tvTitlePage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="@string/description_filter"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHeight"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toBottomOf="@id/tvHeightTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                    <TextView
+                        android:id="@+id/tvTypeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="35dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_types"/>
 
-            <TextView
-                android:id="@+id/tvWeightTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/FilterTitle"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/rvHeight"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/title_Weights"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvFilters"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTypeTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvWeights"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                    <TextView
+                        android:id="@+id/tvWeaknessesTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="35dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/rvFilters"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_Weaknesses"/>
 
-            <TextView
-                android:id="@+id/tvNumberRangeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/FilterTitle"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/rvWeights"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/title_number_range"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWeaknesses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvWeaknessesTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
-            <com.google.android.material.slider.RangeSlider
-                android:id="@+id/rsRangernumber"
-                app:tickColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/tvNumberRangeTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:valueFrom="0.0"
-                android:valueTo="150.0"
-                app:labelBehavior="gone"
-                app:trackColor="@color/sliderThumb"
-                app:thumbColor="@color/sliderThumb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvHeightTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="35dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/rvWeaknesses"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_Heights"/>
 
-            <TextView
-                android:id="@+id/tvStartRange"
-                style="@style/PokemonType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_gray"
-                android:layout_marginStart="15dp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
-                app:layout_constraintStart_toStartOf="@id/rsRangernumber"
-                android:text="1"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvHeightTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
-            <TextView
-                android:id="@+id/tvEndRange"
-                style="@style/PokemonType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_gray"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
-                app:layout_constraintEnd_toEndOf="@id/rsRangernumber"
-                android:layout_marginEnd="15dp"
-                android:text="150"/>
+                    <TextView
+                        android:id="@+id/tvWeightTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="35dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/rvHeight"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_Weights"/>
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWeights"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tvGenerationTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="35dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/rvHeight"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_Weights"/>
 
-    </androidx.cardview.widget.CardView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvGeneration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvWeightTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
+                    <TextView
+                        android:id="@+id/tvNumberRangeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/FilterTitle"
+                        android:layout_marginTop="60dp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/rvGeneration"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_number_range"/>
 
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/rsRangernumber"
+                        app:tickColor="@color/black"
+                        app:layout_constraintTop_toBottomOf="@id/tvNumberRangeTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:valueFrom="0.0"
+                        android:valueTo="150.0"
+                        app:labelBehavior="gone"
+                        app:trackColorActive="@color/psychic"
+                        app:thumbColor="@color/sliderThumb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
+                    <TextView
+                        android:id="@+id/tvStartRange"
+                        style="@style/PokemonType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_gray"
+                        android:layout_marginStart="15dp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
+                        app:layout_constraintStart_toStartOf="@id/rsRangernumber"
+                        android:text="1"/>
+
+                    <TextView
+                        android:id="@+id/tvEndRange"
+                        style="@style/PokemonType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_gray"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/rsRangernumber"
+                        app:layout_constraintEnd_toEndOf="@id/rsRangernumber"
+                        android:layout_marginEnd="15dp"
+                        android:text="150"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvStartRange"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/psychic"
+                            android:layout_marginEnd="10dp"
+                            android:text="CANCEL"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/psychic"
+                            android:layout_marginStart="10dp"
+                            android:text="CANCEL"/>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
