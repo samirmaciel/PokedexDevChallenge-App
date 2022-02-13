@@ -10,4 +10,6 @@
     <string name="title_Heights">Heights</string>
     <string name="title_Weights">Weights</string>
     <string name="title_number_range">Number Range</string>
+    <string name="title_button_apply">Apply</string>
+    <string name="title_button_cancel">Cancel</string>
 </resources>

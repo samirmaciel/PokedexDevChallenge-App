@@ -1,9 +1,11 @@
 package com.samirmaciel.pokedexdevchallenge.feature.presentation.FilterBottomSheet
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -46,8 +48,18 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onResume() {
         super.onResume()
+
+        binding.btnApply.setOnClickListener{
+            dismiss()
+        }
+
+        binding.btnCancel.setOnClickListener{
+            dismiss()
+        }
+
         viewModel.typesList.observe(this) {
             typesFilterAdapter.itemList = it
             typesFilterAdapter.notifyDataSetChanged()
@@ -74,7 +86,6 @@ class FilterBottomSheet : BottomSheetDialogFragment()  {
                 binding.tvEndRange.text = values[1].toInt().toString()
         }
     }
-
 
     private fun initSettingsBottomSheet(){
         val bottomsheet = dialog as? BottomSheetDialog

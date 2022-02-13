@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/samir/StudioProjects/PokedexDevChallenge-App/app/src/main/res/layout/bottomsheet_filters.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/detail_tab_selector.xml" value="0.3953125" />
         <entry key="app/src/main/res/drawable/detail_tab_textcolor_selector.xml" value="0.3953125" />
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.3953125" />
