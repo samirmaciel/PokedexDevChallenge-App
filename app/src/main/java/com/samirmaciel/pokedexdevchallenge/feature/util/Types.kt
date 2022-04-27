@@ -3,14 +3,8 @@ package com.samirmaciel.pokedexdevchallenge.feature.util
 import com.samirmaciel.pokedexdevchallenge.R
 
 
-fun getPokemonType(type : String) : Int{
-//    if(mapTypes[id] != null){
-//        return mapTypes[id]!!
-//    }else {
-//        return "default"
-//    }
-
-    return maptypes[type]!!
+fun getPokemonType(type : String) : Int?{
+    return maptypes[type]
 }
 
 val maptypes = mapOf<String, Int>(
@@ -32,8 +26,6 @@ val maptypes = mapOf<String, Int>(
     "psychic" to R.drawable.ic_typepsychic,
     "steel" to R.drawable.ic_typesteel,
     "water" to R.drawable.ic_typewater,
-
-
 
 )
 

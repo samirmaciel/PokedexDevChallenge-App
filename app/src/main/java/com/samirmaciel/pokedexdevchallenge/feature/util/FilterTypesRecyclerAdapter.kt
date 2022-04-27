@@ -13,7 +13,7 @@ class FilterTypesRecyclerAdapter(val itemClick : (Int) -> Unit) : RecyclerView.A
     var itemList : List<Type> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rv_fitlertypes, parent, false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rv_filter_type_selection, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

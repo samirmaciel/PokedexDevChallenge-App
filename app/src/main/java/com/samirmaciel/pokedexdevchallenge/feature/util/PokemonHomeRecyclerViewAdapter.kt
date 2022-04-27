@@ -33,11 +33,16 @@ class PokemonHomeRecyclerViewAdapter(private val itemClick : () -> Unit) : Recyc
 
             val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png"
 
-            ivType1.setImageResource( getPokemonType(item.types[0].type.name))
-
-            if (item.types.size > 1){
-                ivType2.setImageResource(getPokemonType(item.types[1].type.name))
-                ivType2.visibility = View.VISIBLE
+            if(getPokemonType(item.types[0].type.name) != null){
+                ivType1.setImageResource(getPokemonType(item.types[0].type.name)!!)
+                if (item.types.size > 1 && getPokemonType(item.types[1].type.name) != null){
+                    ivType2.setImageResource(getPokemonType(item.types[1].type.name)!!)
+                    ivType2.visibility = View.VISIBLE
+                }
+            }else{
+                if (item.types.size > 1 && getPokemonType(item.types[1].type.name) != null){
+                    ivType1.setImageResource(getPokemonType(item.types[1].type.name)!!)
+                }
             }
 
             val color = getColor(item.types[0].type.name)

@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="@id/edtSearch"
         app:layout_constraintTop_toBottomOf="@id/edtSearch"
         android:indeterminateTint="@color/gender1"
-        android:max="150"
+        android:max="865"
         android:layout_width="0dp"
         android:layout_height="10dp" />
 

@@ -3,7 +3,6 @@ package com.samirmaciel.pokedexdevchallenge.feature.presentation.HomeScreen
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
@@ -15,9 +14,6 @@ import com.samirmaciel.pokedexdevchallenge.databinding.FragmentHomeBinding
 import com.samirmaciel.pokedexdevchallenge.feature.presentation.FilterBottomSheet.FilterBottomSheet
 import com.samirmaciel.pokedexdevchallenge.feature.util.PokemonHomeRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.coroutines.coroutineContext
-import kotlin.coroutines.suspendCoroutine
-import kotlinx.coroutines.coroutineScope as coroutineScope
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -39,6 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onResume() {
         super.onResume()
 
+        binding.progressLoading.max = viewModel.totalAmountPokemon
         binding.edtSearch.doOnTextChanged { text, start, before, count -> viewModel.searchPokemon(text.toString())  }
 
         viewModel.pokemonList.observe(this){
@@ -47,10 +44,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.loadingProgressNotify.observe(this){
-            Log.d("ErrorApiRequest", "getAllPokmeonsById: " + it)
-            binding.progressLoading.progress = viewModel.loadingProgressList
+            binding.progressLoading.progress = it
 
-            if(viewModel.loadingProgressList >= 150){
+            if(viewModel.currentAmountPokemon >= viewModel.totalAmountPokemon){
                 binding.edtSearch.isEnabled = true
                 binding.edtSearch.hint = resources.getText(R.string.SearchHint)
                 binding.progressLoading.visibility = View.INVISIBLE
